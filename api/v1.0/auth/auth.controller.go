@@ -6,11 +6,11 @@ import (
 	"os"
 	"time"
 
+	"github.com/adryhappier/gin-rest-api-sample/database/models"
+	"github.com/adryhappier/gin-rest-api-sample/lib/common"
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
-	"github.com/velopert/gin-rest-api-sample/database/models"
-	"github.com/velopert/gin-rest-api-sample/lib/common"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -60,7 +60,7 @@ func register(c *gin.Context) {
 
 	var body RequestBody
 	if err := c.BindJSON(&body); err != nil {
-		c.AbortWithStatus(400)
+		c.AbortWithStatus(500)
 		return
 	}
 
